@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Seat Seller</title>
+        <link media="all" type="text/css" href="assets/jquery-ui.css" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="assets/style.css">
+        <style>
+            @import url(//fonts.googleapis.com/css?family=Open+Sans);
+        </style>
+
+
+        {% javascripts filter='?jsqueeze'
+        'assets/js/jquery-noamd.min.js'
+        'assets/js/jquery.js'
+        'assets/js/jquery-ui.js'
+
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    </head>
+    <body>
+
+
+    <div class="GGMMM3DBGGC">
+        <div class="GGMMM3DBDFD">
+            <img src="http://cdn.seatseller.travel/images/ss_logo.jpg" stylename="GGMMM3DBEFD">
+            <form id="login" data-parsley-validate="">
+                <div>
+                    <ul style="border:1px solid #ccc;list-style:none;box-shadow: 0px 0px 12px #ccc;padding:25px">
+                        <li style="margin-bottom:25px"> <a class="GGMMM3DBPED">Se Sconnecter avec Google</a>
+                        </li> <li style="margin-bottom:25px"> <a class="GGMMM3DBNED">Se Sconnecter avec Facebook</a> </li>
+                        <li style="color:#666;"><span style="letter-spacing:5px">------------</span>OU<span style="letter-spacing:5px">------------</span></li>
+                        <div class="GGMMM3DBHFD"><div class="textbox_group">
+                                <input required="" name="_username" class="textbox_text" id="emailbox"  type="text">
+                                <span class="textbox_bar"></span>
+                                <div class="textbox_lbl">Nom d'utilisateur</div>
+                            </div>
+                        </div>
+                        <div class="GGMMM3DBFFD">
+                            <div class="textbox_group">
+                                <input required="" name="_password" class="textbox_text" id="password"  type="password">
+                                <span class="textbox_bar"></span>
+                                <div class="textbox_lbl">Mot de passe</div>
+                            </div>
+                        </div>
+                        <li style="margin-top:-20px; margin-bottom:15px;"> <a class="GGMMM3DBOED">Mot de passe oublié</a> <div style="clear:both"></div> </li>
+                        <li>
+                            <div aria-hidden="true" style="display: none;" class="GGMMM3DBMED"></div>
+                            <div style="clear:both"></div>
+                        </li>
+                        <li>
+                            <input type="hidden" name="_target_path" value="nb_main_dasboard" />
+                            <button type="button" class="GGMMM3DBAFD" id="signin_button" onclick="Login()">Log In</button> </li>
+                        <div class="small_loader" style="text-align:center;display:none"><img src="assets/images/loader-small.gif"></div>
+                        <div class="login_res" style="text-align:center;"></div>
+                        <li style="margin-bottom:0px;text-align:left; margin-top:25px;"> <span>Je suis nouveau ?</span> <a class="GGMMM3DBGFD">S'incrire</a> </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+
+        base_url = "http://localhost:8000/";
+
+
+    </script>
+
+    {% javascripts filter='jsqueeze'
+    'assets/js/jquery.form.js'
+    'assets/js/custom.js'
+    'assets/js/parsley.min.js'
+
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    </body>
+</html>

@@ -1,0 +1,27 @@
+nb_main_dasboard:
+    path:     /dashboard
+    defaults: { _controller: NBMainBundle:Main:dashboard }
+nb_main_search:
+    path:     /search
+    defaults: { _controller: NBMainBundle:Main:search }
+nb_main_recharge:
+    path:     /recharge
+    defaults: { _controller: NBMainBundle:Main:recharge }
+nb_main_custInfo:
+    path:     /custInfo/{travel}/{dateJ}
+    defaults: { _controller: NBMainBundle:Main:custInfo }
+nb_main_booking:
+    path:     /booking
+    defaults: { _controller: NBMainBundle:Main:booking }
+nb_main_confirm:
+    path:     /confirmed/{id}
+    defaults: { _controller: NBMainBundle:Main:confirmed }
+nb_main_print:
+    path:     /print
+    defaults: { _controller: NBMainBundle:Main:print }
+nb_main_reservation:
+    path:     /my-booking
+    defaults: { _controller: NBMainBundle:Main:mybookings }
+nb_main_history:
+    path:     /history
+    defaults: { _controller: NBMainBundle:Main:history }

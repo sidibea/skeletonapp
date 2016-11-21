@@ -1,0 +1,26 @@
+nb_main:
+    resource: "@NBMainBundle/Resources/config/routing.yml"
+    prefix:   /
+nb_app:
+    resource: "@NBMainBundle/Resources/config/app.yml"
+    prefix:   /app
+
+
+nb_user:
+    resource: "@NBUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+
+login:
+    pattern:   /login
+    defaults:  { _controller: NBUserBundle:Security:login }
+
+security_check_route:
+    pattern:   /login_check
+
+logout:
+    pattern:   /logout
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"

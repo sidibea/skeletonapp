@@ -1,0 +1,124 @@
+{% extends "NBMainBundle::admin_layout.html.twig" %}
+
+{% block title %}SeatSeller {% endblock %}
+
+{% block breadcumbs %}
+    <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="#">Acceuil</a>
+            </li>
+            <li class="active">Billet de bus</li>
+        </ul><!-- /.breadcrumb -->
+
+    </div>
+
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <h3 class="header smaller lighter blue">{{ travel.route.source.nom }} <i class="fa fa-exchange"></i> {{ travel.route.destination.nom  }} </h3>
+</div>
+
+<div class="row">
+    <div class="alert alert-danger" style="display: none"></div>
+    <div class="alert alert-block alert-success" style="display: none"></div>
+    <div class="loader" style="text-align: center; display: none;"></div>
+    <form id="booking">
+        <div class="col-md-7">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div>
+                        <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar bigger-110"></i>
+                </span>
+                            <input class="form-control date-picker"  required=""  name="nom" type="text" placeholder="Nom du passager" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <input name="age" class="rb_age" placeholder="Age" data-parsley-type="digits"  type="text">
+                </div>
+                <div class="col-sm-2">
+                    <div class="input-group">
+
+                        <input class="tb_dender" value="H" name="gender" required="" type="radio">&nbsp;  &nbsp;<label class="tb_gender">M</label>&nbsp;  &nbsp;
+                        <input name="gender" value="F" type="radio">&nbsp;  &nbsp;<label class="tb_gender">F</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row"> <br>
+                <div class="col-sm-3">
+                    <div>
+                        <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-phone bigger-110"></i>
+                </span>
+                            <input class="form-control "  required=""  name="mobile" type="text" placeholder="Numero passager" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div>
+                        <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-envelope-o  bigger-110"></i>
+                        </span>
+                            <input class="form-control "    name="email" type="email" placeholder="Adresse email du passager" />
+                            <input type="hidden" name="dateJ" value="{{ dateJ }}" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row"> <br>
+                <div class="col-md-8">
+                    <button type="button" onclick="SeatSellerBooking()"  class="btn btn-primary center">Reserver</button>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+
+    <div class="col-md-5">
+        <div class="widget-box ">
+            <div class="widget-header">
+                <h4 class="smaller">Recapitulatif</h4>
+            </div>
+
+            <div class="widget-body">
+                <div class="widget-main">
+                    {% set commission = travel.price - (travel.price - ((travel.price*5)/100)) %}
+                    <table class="table  table-bordered table-hover">
+                        <tr>
+                            <td><strong>Prix du billet</strong> </td> <td> <strong>XOF {{ travel.price| number_format(0, '.', ' ') }}</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Compagnie de transport</strong> </td> <td> <strong>{{ travel.bus.company.nom }}</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Adresse</strong> </td> <td> <strong>{{ travel.bus.company.adresse }}</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Commission de l'agent</strong> </td> <td> <strong>XOF {{ commission| number_format(0, '.', ' ') }}</strong></td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.col -->
+
+
+</div>
+
+{% endblock %}
+
+{% block pagescript %}
+    <script src="{{ asset('assets/js/parsley.min.js') }}"></script>
+
+{% endblock %}

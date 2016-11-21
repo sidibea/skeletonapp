@@ -1,0 +1,1 @@
+;App.service('WebService',function(e,t){this.send_data=function(n,i){var c=this,r=t.defer(),a=base_url+n,o=null,u={method:'POST',url:a,data:i};e(u).then(function(e){r.resolve(e.data)},function(e){r.reject()});return r.promise}})

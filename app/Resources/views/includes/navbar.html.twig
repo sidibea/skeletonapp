@@ -1,0 +1,61 @@
+<div class="navbar-container ace-save-state" id="navbar-container">
+<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+    <span class="sr-only">Toggle sidebar</span>
+
+    <span class="icon-bar"></span>
+
+    <span class="icon-bar"></span>
+
+    <span class="icon-bar"></span>
+</button>
+
+<div class="navbar-header pull-left">
+    <a href="{{ path('nb_main_dasboard') }}" class="navbar-brand">
+        <small>
+            <img src="http://cdn.seatseller.travel/images/ss_logo.jpg" height="25px" stylename="GGMMM3DBEFD">
+        </small>
+    </a>
+
+    
+</div>
+
+<div class="navbar-buttons navbar-header pull-right" role="navigation">
+<ul class="nav ace-nav">
+
+<li class="light-blue dropdown-modal">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+								<span class="user-info">
+									<small>Bienvenue, {{ app.user.firstname }}</small>
+								</span>
+
+        <i class="ace-icon fa fa-caret-down"></i>
+    </a>
+
+    <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+        <li>
+            <a href="#">
+                <i class="ace-icon fa fa-cog"></i>
+                Configuration
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="ace-icon fa fa-user"></i>
+                Profil
+            </a>
+        </li>
+
+        <li class="divider"></li>
+
+        <li>
+            <a href="{{ path('logout') }}">
+                <i class="ace-icon fa fa-power-off"></i>
+                Se deconnecter
+            </a>
+        </li>
+    </ul>
+</li>
+</ul>
+</div>
+</div><!-- /.navbar-container -->
