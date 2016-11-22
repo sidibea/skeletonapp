@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead
+class ComposerStaticInit2a1b692c807567a6e323fcf90b265fe4
 {
     public static $files = array (
         '92c8763cd6170fce6fcfe7e26b4e8c10' => __DIR__ . '/..' . '/symfony/phpunit-bridge/bootstrap.php',
@@ -48,8 +48,8 @@ class ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead
         ),
         'P' => 
         array (
+            'Psr\\Log\\' => 8,
             'Patchwork\\' => 10,
-            'PUGX\\AutocompleterBundle\\' => 25,
         ),
         'M' => 
         array (
@@ -65,10 +65,6 @@ class ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead
             'Ivory\\CKEditorBundle\\' => 21,
             'Incenteev\\ParameterHandler\\' => 27,
         ),
-        'H' => 
-        array (
-            'HWI\\Bundle\\OAuthBundle\\' => 23,
-        ),
         'F' => 
         array (
             'FOS\\UserBundle\\' => 15,
@@ -77,6 +73,7 @@ class ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead
         array (
             'Doctrine\\Instantiator\\' => 22,
             'Doctrine\\Common\\Cache\\' => 22,
+            'Doctrine\\Common\\Annotations\\' => 28,
             'Doctrine\\Common\\' => 16,
             'Doctrine\\Bundle\\DoctrineCacheBundle\\' => 36,
             'Doctrine\\Bundle\\DoctrineBundle\\' => 31,
@@ -168,13 +165,13 @@ class ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead
         array (
             0 => __DIR__ . '/..' . '/sensio/distribution-bundle',
         ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
         'Patchwork\\' => 
         array (
             0 => __DIR__ . '/..' . '/patchwork/jsqueeze/src',
-        ),
-        'PUGX\\AutocompleterBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/pugx/autocompleter-bundle',
         ),
         'Monolog\\' => 
         array (
@@ -196,10 +193,6 @@ class ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead
         array (
             0 => __DIR__ . '/..' . '/incenteev/composer-parameter-handler',
         ),
-        'HWI\\Bundle\\OAuthBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/hwi/oauth-bundle',
-        ),
         'FOS\\UserBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/friendsofsymfony/user-bundle',
@@ -211,6 +204,10 @@ class ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead
         'Doctrine\\Common\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache',
+        ),
+        'Doctrine\\Common\\Annotations\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/annotations/lib/Doctrine/Common/Annotations',
         ),
         'Doctrine\\Common\\' => 
         array (
@@ -231,13 +228,6 @@ class ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead
     );
 
     public static $prefixesPsr0 = array (
-        'U' => 
-        array (
-            'Unirest\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/mashape/unirest-php/src',
-            ),
-        ),
         'T' => 
         array (
             'Twig_' => 
@@ -250,13 +240,6 @@ class ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead
             'SensioLabs\\Security' => 
             array (
                 0 => __DIR__ . '/..' . '/sensiolabs/security-checker',
-            ),
-        ),
-        'P' => 
-        array (
-            'Psr\\Log\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/psr/log',
             ),
         ),
         'D' => 
@@ -280,17 +263,6 @@ class ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead
             'Doctrine\\Common\\Collections\\' => 
             array (
                 0 => __DIR__ . '/..' . '/doctrine/collections/lib',
-            ),
-            'Doctrine\\Common\\Annotations\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/doctrine/annotations/lib',
-            ),
-        ),
-        'B' => 
-        array (
-            'Buzz' => 
-            array (
-                0 => __DIR__ . '/..' . '/kriswallsmith/buzz/lib',
             ),
         ),
         'A' => 
@@ -324,11 +296,11 @@ class ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead::$prefixDirsPsr4;
-            $loader->fallbackDirsPsr4 = ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead::$fallbackDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit2a1b692c807567a6e323fcf90b265fe4::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit2a1b692c807567a6e323fcf90b265fe4::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInit2a1b692c807567a6e323fcf90b265fe4::$fallbackDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit2a1b692c807567a6e323fcf90b265fe4::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit2a1b692c807567a6e323fcf90b265fe4::$classMap;
 
         }, null, ClassLoader::class);
     }

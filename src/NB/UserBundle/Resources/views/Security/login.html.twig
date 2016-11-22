@@ -3,21 +3,15 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <title>Seat Seller</title>
-        <link media="all" type="text/css" href="assets/jquery-ui.css" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="assets/style.css">
+        <link media="all" type="text/css" href="{{ asset('assets/jquery-ui.css') }}" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="{{asset('assets/style.css') }}" >
         <style>
             @import url(//fonts.googleapis.com/css?family=Open+Sans);
         </style>
-
-
-        {% javascripts filter='?jsqueeze'
-        'assets/js/jquery-noamd.min.js'
-        'assets/js/jquery.js'
-        'assets/js/jquery-ui.js'
-
-        %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
-        {% endjavascripts %}
+<script type="text/javascript" src="{{ absolute_url(asset('assets/js/jquery-noamd.min.js')) }}"></script>
+<script type="text/javascript" src="{{ absolute_url(asset('assets/js/jquery.js')) }}"></script>
+<script type="text/javascript" src="{{ absolute_url(asset('assets/js/jquery-ui.js')) }}"></script>
+        
     </head>
     <body>
 
@@ -62,18 +56,14 @@
     </div>
     <script>
 
-        base_url = "http://localhost:8000/";
+        base_url = "http://seatseller.ml/";
 
 
     </script>
 
-    {% javascripts filter='jsqueeze'
-    'assets/js/jquery.form.js'
-    'assets/js/custom.js'
-    'assets/js/parsley.min.js'
-
-    %}
-    <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
+<script type="text/javascript" src="{{ absolute_url(asset('assets/js/jquery.form.js')) }}"></script>
+<script type="text/javascript" src="{{ absolute_url(asset('assets/js/custom.js')) }}"></script>
+<script type="text/javascript" src="{{ absolute_url(asset('assets/js/parsley.min.js')) }}"></script>
+    
     </body>
 </html>

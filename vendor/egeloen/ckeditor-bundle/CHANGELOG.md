@@ -1,5 +1,29 @@
 # CHANGELOG
 
+### 4.0.6 (2016-10-28)
+
+ * 62ca1e1 - Fix usage of deprecated routing feature
+ * c06af42 - Added missing configuration parameters for dedicated templates
+ * 8898f62 - Update style.rst
+ * e831ece - Fixed a minor syntax issue
+ 
+### 4.0.5 (2016-09-07)
+
+ * dde0e2c - Upgrade CKEditor to 4.5.11
+ * a3554ed - Bring back form alias support for Symfony 2.8 which have been dropped accidentally
+
+### 4.0.4 (2016-07-31)
+
+ * 1f3f94a - [PHPUnit] Upgrade to latest version
+ * 1bd768d - [Renderer] Add automatic language support
+ * dfe2e05 - [Renderer] Allow to render template with an engine
+ * a1daa71 - Upgrade CKEditor to 4.5.10
+ * de28bd5 - [DI] Fix form alias for Symfony 2.8
+ * a11ef4f - [Travis] Remove PHP 5.3.3 build
+ * d2de7ea - [Doc] Update installation for Symfony >= 3
+ * fa7f379 - [Doc] Update documentation for plugin configuration.
+ * 900e824 - [Doc] Add section about template overriding
+
 ### 4.0.3 (2016-04-08)
 
  * ca4ded7 - Removes dead code which break twig template compilation

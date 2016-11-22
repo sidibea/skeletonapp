@@ -139,6 +139,20 @@ class CKEditorRenderer implements CKEditorRendererInterface
             $template['imagesPath'] = $this->fixPath($this->fixUrl($template['imagesPath']));
         }
 
+        if (isset($template['templates'])) {
+            foreach ($template['templates'] as &$rawTemplate) {
+                if (isset($rawTemplate['template'])) {
+                    $rawTemplate['html'] = $this->getTemplating()->render(
+                        $rawTemplate['template'],
+                        isset($rawTemplate['template_parameters']) ? $rawTemplate['template_parameters'] : array()
+                    );
+                }
+
+                unset($rawTemplate['template']);
+                unset($rawTemplate['template_parameters']);
+            }
+        }
+
         $this->jsonBuilder
             ->reset()
             ->setValues($template);
@@ -155,6 +169,10 @@ class CKEditorRenderer implements CKEditorRendererInterface
      */
     private function fixConfigLanguage(array $config)
     {
+        if (!isset($config['language']) && ($language = $this->getLanguage()) !== null) {
+            $config['language'] = $language;
+        }
+
         if (isset($config['language'])) {
             $config['language'] = strtolower(str_replace('_', '-', $config['language']));
         }
@@ -217,13 +235,7 @@ class CKEditorRenderer implements CKEditorRendererInterface
                 $config[$url] = $this->getRouter()->generate(
                     $config[$route],
                     isset($config[$routeParameters]) ? $config[$routeParameters] : array(),
-                    isset($config[$routeAbsolute])
-                        ? $config[$routeAbsolute]
-                        : (
-                            defined('Symfony\Component\Routing\Generator\UrlGeneratorInterface::ABSOLUTE_PATH')
-                                ? UrlGeneratorInterface::ABSOLUTE_PATH
-                                : false
-                        )
+                    $this->fixRoutePath(!isset($config[$routeAbsolute]) || $config[$routeAbsolute])
                 );
             }
 
@@ -300,11 +312,69 @@ class CKEditorRenderer implements CKEditorRendererInterface
     {
         $assetsHelper = $this->getAssetsHelper();
 
-        if ($assetsHelper !== null) {
-            $url = $assetsHelper->getUrl($url);
+        return $assetsHelper !== null ? $assetsHelper->getUrl($url) : $url;
+    }
+
+    /**
+     * @param bool $routePath
+     *
+     * @return int|bool
+     */
+    private function fixRoutePath($routePath)
+    {
+        if ($routePath) {
+            return defined('Symfony\Component\Routing\Generator\UrlGeneratorInterface::ABSOLUTE_PATH')
+                ? UrlGeneratorInterface::ABSOLUTE_PATH
+                : true;
         }
 
-        return $url;
+        return defined('Symfony\Component\Routing\Generator\UrlGeneratorInterface::RELATIVE_PATH')
+            ? UrlGeneratorInterface::RELATIVE_PATH
+            : false;
+    }
+
+    /**
+     * Gets the locale.
+     *
+     * @return string|null The locale.
+     */
+    private function getLanguage()
+    {
+        if (($request = $this->getRequest()) !== null) {
+            return $request->getLocale();
+        }
+
+        if ($this->container->hasParameter($parameter = 'locale')) {
+            return $this->container->getParameter($parameter);
+        }
+    }
+
+    /**
+     * Gets the request.
+     *
+     * @return \Symfony\Component\HttpFoundation\Request|null The request.
+     */
+    private function getRequest()
+    {
+        if ($this->container->has($service = 'request_stack')) {
+            return $this->container->get($service)->getMasterRequest();
+        }
+
+        if ($this->container->has($service = 'request')) {
+            return $this->container->get($service);
+        }
+    }
+
+    /**
+     * Gets the templating engine.
+     *
+     * @return \Symfony\Component\Templating\EngineInterface|\Twig_Environment The templating engine.
+     */
+    private function getTemplating()
+    {
+        return $this->container->has($templating = 'templating')
+            ? $this->container->get($templating)
+            : $this->container->get('twig');
     }
 
     /**

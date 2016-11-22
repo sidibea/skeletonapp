@@ -3,8 +3,8 @@
     <head>
         <title>SeatSeller - La plateforme pour les agents de voyages</title>
         <meta http-equiv="content-type" content="text/html; charset=windows-1252">
-        <link media="all" type="text/css" href="assets/jquery-ui.css" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="assets/style.css">
+        <link media="all" type="text/css" href="{{ absolute_url(asset('assets/jquery-ui.css')) }}" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="{{ absolute_url(asset('assets/style.css')) }}">
     </head>
 <body>
 
@@ -39,19 +39,19 @@
         <div class="GGMMM3DBGHD">
             <div class="GGMMM3DBAGD">
                 <li class="GGMMM3DBKGD">
-                    <img src="assets/images/ticket_new.png">
+                    <img src="{{ absolute_url(asset('assets/images/ticket_new.png')) }}">
                     <h4>Système de réservation de billets de bus en direct.</h4>
                     <p>?oyen de réservation Fiable &amp; Rapide pour une place assurée.</p>
                 </li>
-                <li> <img src="assets/images/root.png"> 
+                <li> <img src="{{ absolute_url(asset('assets/images/root.png')) }}"> 
                     <h4>300 Axes à travers le Mali</h4>
                     <p>Un moyen incomparable pour générer des revenus.</p>
                 </li>
-                <li class="GGMMM3DBKGD"> <img src="assets/images/hotel_new.png"> 
+                <li class="GGMMM3DBKGD"> <img src="{{ absolute_url(asset('assets/images/hotel_new.png')) }}"> 
                     <h4>Bus &amp; Transfert d'argent sur une même plateforme</h4>
                     <p>Une grosse commission sur chaque réservation..</p>
                 </li> 
-                <li> <img src="assets/images/agents.png">
+                <li> <img src="{{ absolute_url(asset('assets/images/agents.png')) }}">
                     <h4>Plus de 12000 agents actifs</h4>
                     <p>Agents générant des revenus énormes tous les jours.</p>
                 </li> <a class="GGMMM3DBHGD">DEVENIR SEATSELLER</a>
@@ -59,12 +59,9 @@
         </div>  
         <div class="GGMMM3DBGHD"> 
             <div class="GGMMM3DBBGD"> 
-                <li class="GGMMM3DBKGD"><img src="assets/images/explore.png"></li> 
+                <li class="GGMMM3DBKGD"><img src="{{ absolute_url(asset('assets/images/explore.png')) }}"></li> 
                 <li class="GGMMM3DBIGD"> <h4>Explorer et réserver avec plus de 30 compagnies de transport !</h4>
-                    <p>This
-                        is yet another highlight of your awesome SeatSeller account. SeatSeller
-                        hotels empowers you with more commission and offers. Earn up to 10%
-                        commission from hotel booking. 
+                    <p>Ceci est encore un autre point fort de votre superbe compte SeatSeller. Le SeatSeller vous accorde  plus de commissions et d'offres. Gagnez jusqu'à 10% de commission sur vos reservations. 
                     </p> 
                     <br> 
                     <a class="GGMMM3DBDHD">COMMERCER A UTILISER SEATSELLER MAINTENANT</a>
@@ -76,13 +73,11 @@
                 <li class="GGMMM3DBKGD">
                     <h4>Plus de 3 Milliards de Franc CFA sont liés au transport routier </h4>
                     <p>
-                        This is yet another highlight of your awesome SeatSeller account.
-                        SeatSeller hotels empowers you with more commission and offers. Earn up
-                        to 10% commission from hotel booking. 
+                        Ceci est encore un autre point fort de votre superbe compte SeatSeller. Le transport malien est en plein expansion. Ne perdez pas cette occasion.
                     </p><br>
                     <a class="GGMMM3DBDHD">COMMERCER A UTILISER SEATSELLER MAINTENANT</a>
                 </li> 
-                <li class="GGMMM3DBIGD"><img src="assets/images/more_com.png"></li>
+                <li class="GGMMM3DBIGD"><img src="{{ absolute_url(asset('assets/images/more_com.png')) }}"></li>
             </div> 
         </div> 
         <div class="GGMMM3DBGHD"> 
@@ -91,7 +86,7 @@
                 <p> This is a great product. It reveals and individual approach to each customer.<br>
                     I like the level of the provided service. 
                 </p> 
-                <img src="assets/images/r_reddy.jpg"> 
+                <img src="{{ absolute_url(asset('assets/images/r_reddy.jpg')) }}"> 
                 <h5>Raghavendra Reddy<br>Jai Bhavani Travels, Karnataka</h5> 
             </div> 
         </div> 
@@ -116,7 +111,7 @@
         </div>  
         <div class="GGMMM3DBCGD"> 
             <ul class="GGMMM3DBGHD"> 
-                <li><a href=""><img src="assets/images/footer_logo.png"></a></li> 
+                <li><a href=""><img src="{{ absolute_url(asset('assets/images/footer_logo.png')) }}"></a></li> 
                 <li><a href=""> A Propos de SeatSeller</a></li>
                 <li><a href=""> Termes et Conditions</a></li>
                 <li><a class="gwt-Anchor">Se connecter</a></li> <li><a class="gwt-Anchor">S'inscrire</a> </li>

@@ -10,9 +10,11 @@ Here, you can find all bundle features:
     config
     toolbar
     loading
+    language
     file-browse-upload
     jquery
     require-js
+    append-javascript
     textarea-sync
     textarea-fallback
     autoinline
