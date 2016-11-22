@@ -1,9 +1,9 @@
 # This file is auto-generated during the composer install
 parameters:
-    database_host: mysql.hostinger.co.uk
+    database_host: 127.0.0.1
     database_port: null
-    database_name: u151832683_ss
-    database_user: u151832683_ss
+    database_name: rest_api
+    database_user: root
     database_password: sorofing
     mailer_transport:  smtp
     mailer_encryption: ssl

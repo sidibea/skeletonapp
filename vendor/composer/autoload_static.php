@@ -228,6 +228,13 @@ class ComposerStaticInit2a1b692c807567a6e323fcf90b265fe4
     );
 
     public static $prefixesPsr0 = array (
+        'U' => 
+        array (
+            'Unirest\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/mashape/unirest-php/src',
+            ),
+        ),
         'T' => 
         array (
             'Twig_' => 

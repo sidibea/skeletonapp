@@ -203,7 +203,7 @@ class MainController extends Controller{
                 $reservation->setChannel('seatseller');
                 $reservation->setChannelId($this->getUser()->getId());
                 $reservation->setSeats('1');
-                $reservation->setConfirmed(false);
+                $reservation->setConfirmed(true);
                 $reservation->setDateAdd(new \datetime);
                 $reservation->setDateUpd(new \datetime);
 
@@ -285,9 +285,13 @@ class MainController extends Controller{
     }
 
     public function mybookingsAction(){
+        $user = $this->getUser();
 
+        $reservation = $this->get('doctrine.orm.entity_manager')->getRepository('NBMainBundle:Reservation') ->getReservation($user->getId());
 
-        return $this->render('NBMainBundle::mybookings.html.twig');
+        return $this->render('NBMainBundle::mybookings.html.twig', [
+            'reservation' => $reservation
+        ]);
     }
 
     public function historyAction(Request $request){
@@ -310,6 +314,87 @@ class MainController extends Controller{
             'history' => $history
         ));
 
+    }
+
+    public function accountrechargeAction(Request $request){
+        $solde =  $this->get('doctrine.orm.entity_manager')->getRepository('NBMainBundle:Income') ->getStatus($this->getUser()->getId());
+
+        $user = $this->getUser();
+
+        if($request->isXmlHttpRequest()){
+            $montant = $request->get('amount');
+            $mobile = str_replace("-", "",  $request->get('mob'));
+
+            $income = new Income();
+            $em = $this->getDoctrine()->getManager();
+
+            $OMRequest = [
+                'endUserId' => 'tel:+'.$mobile,
+                'transactionOperationStatus' => 'Charged',
+                'chargingInformation' => [
+                    'description' => 'Recharge de compte seatseller',
+                    'amount' => (int) $montant,
+                    'currency' => 'XOF',
+                ],
+                'chargingMetaData' => [
+                    'serviceID' => 'SeatSeller recharge',
+                    'productID' => 'SEATSELLER #'.$user->getId(),
+                ],
+                'referenceCode' => 'nextBus R#'.uniqid(),
+                'clientCorrelator' => 'NextBus #'.uniqid()
+            ];
+
+            $headers = array('Accept' => 'application/json', 'Authorization' => 'Bearer fc8ef78b9a13da650c2bcfa1b865737', 'Content-Type' => 'application/json');
+            $body = Unirest\Request\Body::json($OMRequest);
+            $no_encode = urlencode('tel:+'.$mobile);
+
+
+
+            $response = Unirest\Request::post("https://api.sdp.orange.com/payment/v1/".$no_encode."/transactions/amount", $headers, $body);
+
+            //return $response;
+            if($response->code == '201'){
+
+                $income->setMontant($montant);
+                $income->setUsers($user);
+                $income->setDateRecharge(new \datetime);
+                $income->setCreatedAt(new \datetime);
+
+                $em->persist($income);
+                $em->flush();
+
+                return new JsonResponse([
+                    'success' => true,
+                    'message' => 'votre Compte a été bien été crédité.'
+                ]);
+
+            }elseif($response->code == '500'){
+                return new JsonResponse([
+                    'success' => false,
+                    'message' => 'Votre solde est insuffisant pour la transaction demande.',
+                    'code' => $response->code
+                ]);
+
+            }elseif($response->code == '403'){
+                return new JsonResponse([
+                    'success' => false,
+                    'message' => 'Montant maximum autorisé est dépassé.',
+                    'code' => $response->code
+
+                ]);
+            }else{
+                return new JsonResponse([
+                    'success' => false,
+                    'message' => 'Il y a eu une erreur lors de la transaction.',
+                    'code' => $response->body
+                ]);
+
+            }
+        }
+
+        return $this->render('NBMainBundle::recharge.html.twig', array(
+            'solde' => $solde
+        ));
     }
 
 

@@ -72,8 +72,35 @@ class ReservationRepository extends \Doctrine\ORM\EntityRepository
         $queryBuilder = $this
             ->createQueryBuilder('r')
             ->where('r.channel_id = :user')
-            ->setParameter('user', $user)
+            ->andWhere('r.confirmed = :f')
+            ->setParameters([
+                'user' => $user,
+                'f' => true
+            ])
             ->setMaxResults(8)
+        ;
+        // On récupère la Query à partir du QueryBuilder
+        $query = $queryBuilder->getQuery();
+        // On récupère les résultats à partir de la Query
+        $results = $query->getResult();
+        //$results = $results;
+
+
+        // var_dump($results['booked']); exit;
+        return $results;
+
+    }
+
+    public function getReservation($user){
+
+        $queryBuilder = $this
+            ->createQueryBuilder('r')
+            ->where('r.channel_id = :user')
+            ->andWhere('r.confirmed = :f')
+            ->setParameters([
+                'user' => $user,
+                'f' => true
+            ])
         ;
         // On récupère la Query à partir du QueryBuilder
         $query = $queryBuilder->getQuery();

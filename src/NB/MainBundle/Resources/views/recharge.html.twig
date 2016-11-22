@@ -1,0 +1,110 @@
+{% extends "NBMainBundle::admin_layout.html.twig" %}
+
+{% block title %}SeatSeller {% endblock %}
+
+
+
+{% block breadcumbs %}
+    <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="#">Acceuil</a>
+            </li>
+            <li class="active">Billet de bus</li>
+        </ul><!-- /.breadcrumb -->
+
+    </div>
+
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <h3 class="header smaller lighter blue">Recharger mon compte</h3>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="widget-box">
+            <div class="widget-header">
+                <h4 class="smaller">
+                    <img src="{{ asset('assets/images/om.png') }}" height="25px" width="50px">
+                    Orange Money
+                    <small>Recharger votre compte via Orange Money</small>
+                </h4>
+            </div>
+
+            <div class="widget-body">
+                <div class="widget-main">
+                    <form id="accountrecharge" data-parsley-validate="">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right">Numero O'Money</label>
+                        <span class="input-icon">
+                            <input class="input-mask-phone form-control"  name="mob" required="" id="form-field-icon-1" type="text">
+                            <i class="ace-icon fa fa-phone blue"></i>
+                        </span>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right">Montant</label>
+                        <span class="input-icon">
+                            <input id="form-field-icon-1" required="" data-parsley-type="digits" name="amount" type="text">
+                            <i class="ace-icon fa fa-money blue"></i>
+                        </span>
+                        </div>
+                        <div class="form-actions center">
+                            <div class="small_loader" style="text-align:center;display:none"><img src="{{ asset('assets/images/loader-small.gif') }}"></div>
+                            <div class="recharge_res" style="text-align:center;"></div>
+                            <button type="button" onclick="RechargeA()" class="btn btn-sm btn-success">
+                                Recharger
+                                <i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <h4>Statut du compte</h4>
+
+        <hr>
+        <h1 class="center"> <small>Votre compte est de : <br></small> {{ solde }} FCFA</h1>
+
+    </div>
+
+</div>
+{% endblock %}
+
+{% block pagescript %}
+    <!--[if lte IE 8]>
+    <script src="assets/js/excanvas.min.js"></script>
+    <![endif]-->
+    <script src="{{ asset('assets/js/jquery-ui.custom.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.ui.touch-punch.min.js') }}"></script>
+    <script src="{{ asset('assets/js/chosen.jquery.min.js') }}"></script>
+    <script src="assets/js/spinbox.min.js"></script>
+    <script src="{{ asset('assets/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('assets/js/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/js/autosize.min.js') }}"></script>
+    <script src="{{ asset('assets/js/parsley.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.inputlimiter.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.maskedinput.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap-tag.min.js') }}"></script>
+{% endblock %}
+
+
+
+{% block scripts %}
+    <!-- inline scripts related to this page -->
+    <script type="text/javascript">
+        jQuery(function($) {
+
+
+            $('.input-mask-phone').mask('99-99-99-99-99-99-99');
+
+
+        });
+    </script>
+{% endblock %}

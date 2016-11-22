@@ -25,3 +25,6 @@ nb_main_reservation:
 nb_main_history:
     path:     /history
     defaults: { _controller: NBMainBundle:Main:history }
+nb_main_recharge_compte:
+    path:     /account-recharge
+    defaults: { _controller: NBMainBundle:Main:accountrecharge }

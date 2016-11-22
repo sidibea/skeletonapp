@@ -1,13 +1,9 @@
 $('#searchBtn').on('click',function(e){
     var calender = $('.pickup_datef').val();
 
-
-
-
         var froms = $("#from").val();
         var to =$("#to").val();
         var dateJ =$("#doj").val();
-
 
 
         window.location.href = base_url+"app/search?from=" + froms + "&to=" + to + "&dateJ=" + dateJ ;
@@ -51,6 +47,28 @@ function Recharge(){
         }else{
             $('.recharge_res').html("<p class='success '>"+ details.message +"</p>");
             setTimeout(function(){$('.recharge_res').hide(),$('#recharge')[0].reset(); }, 1500);
+        }
+
+    }
+
+}
+function RechargeA(){
+    if ($('#accountrecharge').parsley().validate() ) {
+        $('.small_loader').show();
+        var data=$('#accountrecharge').serializeArray();
+        var url= base_url + "app/account-recharge";
+        var result = post_ajax(url,data);
+        var details = result;
+        $('.small_loader').hide();
+        $('.recharge_res').show();
+        if(details.success == false){
+            $('.recharge_res').html("<p class='error '>"+ details.message +"</p>");
+            setTimeout(function(){$('.recharge_res').hide(); }, 1500);
+
+        }else{
+            $('.recharge_res').html("<p class='success '>"+ details.message +"</p>");
+            setTimeout(function(){$('.recharge_res').hide(),$('#accountrecharge')[0].reset(); }, 1500);
+            location.reload();
         }
 
     }
